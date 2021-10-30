@@ -5,6 +5,7 @@ import Header from './components/Header.js'
 import SearchBar from './components/SearchBar.js'
 import AnalysisCard from './components/AnalysisCard.js'
 import ArticlePreviewCard from './components/ArticlePreviewCard.js'
+import FaqsCard from './components/FaqsCard.js'
 
 const theme = createTheme({
   palette: {
@@ -37,7 +38,7 @@ function App(){
     <ThemeProvider theme={theme}>
       <Container disableGutters maxWidth='false'>
         <Header/>
-        <ArticlePreviewCard/>
+        <FaqsCard/>
       </Container>
     </ThemeProvider>
   );
