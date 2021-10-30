@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './components/Header.js'
 import SearchBar from './components/SearchBar.js'
 import AnalysisCard from './components/AnalysisCard.js'
+import ArticlePreviewCard from './components/ArticlePreviewCard.js'
 
 const theme = createTheme({
   palette: {
@@ -36,7 +37,7 @@ function App(){
     <ThemeProvider theme={theme}>
       <Container disableGutters maxWidth='false'>
         <Header/>
-        <AnalysisCard/>
+        <ArticlePreviewCard/>
       </Container>
     </ThemeProvider>
   );
