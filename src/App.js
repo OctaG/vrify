@@ -9,7 +9,7 @@ import FaqsCard from './components/FaqsCard.js'
 import AnalysisPreviewCard from './components/AnalysisPreviewCard.js'
 
 import ArticlePreviewCarousel from './modules/ArticlePreviewCarousel.js'
-
+import AnalysisPreviewCarousel from './modules/AnalysisPreviewCarousel.js'
 
 const theme = createTheme({
   palette: {
@@ -48,7 +48,7 @@ function App(){
     <ThemeProvider theme={theme}>
       <Container disableGutters maxWidth='false'>
         <Header/>
-        <AnalysisPreviewCard color={"card.true"}/>
+        <AnalysisPreviewCarousel color="card.true"/>
       </Container>
     </ThemeProvider>
   );
