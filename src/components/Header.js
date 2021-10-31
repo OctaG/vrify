@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 
+import { Link } from "react-router-dom";
+
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -27,10 +29,10 @@ export default function Header(props){
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link>BUSCAR</Nav.Link>
+            <Nav.Link as={Link} to={'/search'}>BUSCAR</Nav.Link>
             <Nav.Link>CÓMO FUNCIONA</Nav.Link>
             <Nav.Link>FEEDBACK</Nav.Link>
-            <Nav.Link>LOG IN</Nav.Link>
+            <Nav.Link as={Link} to={'/login'}>LOG IN</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

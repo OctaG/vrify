@@ -1,6 +1,14 @@
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
+
 import Header from './components/Header.js'
 import SearchBar from './components/SearchBar.js'
 import AnalysisCard from './components/AnalysisCard.js'
@@ -46,10 +54,19 @@ const theme = createTheme({
 function App(){
   return(
     <ThemeProvider theme={theme}>
-      <Container disableGutters maxWidth='false'>
-        <Header/>
-        <AnalysisPreviewCarousel color="card.true"/>
-      </Container>
+      <Router>
+        <Container disableGutters maxWidth='false'>
+          <Header/>
+        </Container>
+        <Switch>
+          <Route path="/search">
+            <SearchBar/>
+          </Route>
+          <Route path="/login">
+            <ArticlePreviewCarousel/>
+          </Route>
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }
