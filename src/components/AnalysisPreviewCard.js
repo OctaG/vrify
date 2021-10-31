@@ -11,11 +11,11 @@ import { CardActionArea } from '@mui/material';
 import { TwitterTweetEmbed } from 'react-twitter-embed'
 
 
-export default function AnalysisPreviewCard(){
+export default function AnalysisPreviewCard(props){
   return(
     <Container maxWidth="xs">
       <Card
-        sx={{maxWidth: 400, backgroundColor: "card.false", borderRadius: 8}}
+        sx={{maxWidth: 400, backgroundColor: props.color, borderRadius: 8}}
       >
         <CardActionArea>
           <Box sx={{marginTop: 3, marginLeft: 5, marginRight: 5}}>
