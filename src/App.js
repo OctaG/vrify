@@ -7,6 +7,8 @@ import AnalysisCard from './components/AnalysisCard.js'
 import ArticlePreviewCard from './components/ArticlePreviewCard.js'
 import FaqsCard from './components/FaqsCard.js'
 
+import ArticlePreviewCarousel from './modules/ArticlePreviewCarousel.js'
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -38,7 +40,7 @@ function App(){
     <ThemeProvider theme={theme}>
       <Container disableGutters maxWidth='false'>
         <Header/>
-        <FaqsCard/>
+        <ArticlePreviewCarousel/>
       </Container>
     </ThemeProvider>
   );

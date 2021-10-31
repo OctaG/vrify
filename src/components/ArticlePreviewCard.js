@@ -9,8 +9,7 @@ import Container from '@mui/material/Container';
 
 export default function ArticlePreviewCard() {
   return (
-    <Container maxWidth="xs">
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345}}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -29,6 +28,5 @@ export default function ArticlePreviewCard() {
           </CardContent>
         </CardActionArea>
       </Card>
-    </Container>
   );
 }
