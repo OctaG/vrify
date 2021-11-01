@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useHistory } from "react-router-dom";
+
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -8,7 +10,10 @@ import Typography from '@mui/material/Typography';
 import SearchBar from '../components/SearchBar.js'
 
 
+
+
 export default function Search(){
+  const history = useHistory();
   return(
     <Container maxWidth="xl">
       <Box sx={{marginTop: 20}}>
@@ -36,6 +41,9 @@ export default function Search(){
       </Box>
       <Box textAlign='center' sx={{padding: 5}}>
         <Button
+          onClick={() => {
+            history.push("/analysis");
+          }}
           variant="contained"
           size="large"
           sx={{

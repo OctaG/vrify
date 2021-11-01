@@ -53,6 +53,9 @@ function App(){
           <Header/>
         </Container>
         <Switch>
+          <Route path="/analysis">
+            
+          </Route>
           <Route path="/">
             <Search/>
           </Route>
