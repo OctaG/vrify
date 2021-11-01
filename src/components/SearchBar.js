@@ -17,12 +17,11 @@ export default function SearchBar(){
              <SearchIcon sx={{color:"primary.main"}}/>
            </InputAdornment>
          }
-          sx={
-            {
-              marginTop: 5,
-              borderRadius: 4
-            }
-          }
+          sx={{
+            marginTop: 5,
+            borderRadius: 4,
+            color: "text.secondary",
+          }}
         />
     </Container>
   );

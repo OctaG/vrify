@@ -10,14 +10,8 @@ import {
 } from "react-router-dom";
 
 import Header from './components/Header.js'
-import SearchBar from './components/SearchBar.js'
-import AnalysisCard from './components/AnalysisCard.js'
-import ArticlePreviewCard from './components/ArticlePreviewCard.js'
-import FaqsCard from './components/FaqsCard.js'
-import AnalysisPreviewCard from './components/AnalysisPreviewCard.js'
 
-import ArticlePreviewCarousel from './modules/ArticlePreviewCarousel.js'
-import AnalysisPreviewCarousel from './modules/AnalysisPreviewCarousel.js'
+import Search from './pages/Search.js'
 
 const theme = createTheme({
   palette: {
@@ -59,11 +53,8 @@ function App(){
           <Header/>
         </Container>
         <Switch>
-          <Route path="/search">
-            <SearchBar/>
-          </Route>
-          <Route path="/login">
-            <ArticlePreviewCarousel/>
+          <Route path="/">
+            <Search/>
           </Route>
         </Switch>
       </Router>
