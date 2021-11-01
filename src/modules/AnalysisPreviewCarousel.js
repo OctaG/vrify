@@ -16,9 +16,9 @@ export default function AnalysisPreviewCarousel(props){
   return(
     <Carousel showArrows={false} showStatus={false}>
       {[0, 1].map((value) => (
-        <Grid sx={{ flexGrow: 1, marginBottom: 6}} container spacing={2}>
+        <Grid sx={{ flexGrow: 1, marginBottom: 6}} container spacing={1}>
           <Grid item xs={12}>
-            <Grid container justifyContent="center" spacing={8}>
+            <Grid container justifyContent="center" spacing={3}>
               {[0, 1, 2, 3].map((value) => (
                 <Grid key={value} item>
                     <AnalysisPreviewCard color={props.color}/>

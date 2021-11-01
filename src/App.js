@@ -13,6 +13,7 @@ import Header from './components/Header.js'
 
 import Search from './pages/Search.js'
 import Analysis from './pages/Analysis.js'
+import Profile from './pages/Profile.js'
 
 const theme = createTheme({
   palette: {
@@ -56,6 +57,9 @@ function App(){
         <Switch>
           <Route path="/analysis">
             <Analysis/>
+          </Route>
+          <Route path="/login">
+            <Profile/>
           </Route>
           <Route path="/">
             <Search/>
