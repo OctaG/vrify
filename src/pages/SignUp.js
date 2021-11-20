@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 
 import {Link} from "react-router-dom";
 
-//import firebase from "../utils/firebase.js";
+import firebase from "../utils/firebase.js";
 
 export default function SignUpForm(){
 
@@ -52,14 +52,13 @@ export default function SignUpForm(){
 
   const checkPasswordFieldForError = (value) =>{
     const input = value;
-    if(!input.match(/"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/)){
+    if(!input.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)){
       setPasswordFieldError(true);
     }else{
       setPasswordFieldError(false);
     }
   }
 
-  /*
   const createUserWithEmailAndPassword = (email ,password, firstName, lastName) => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
@@ -68,9 +67,13 @@ export default function SignUpForm(){
     .catch((error) => {
       const errorCode = error.code;
       if(errorCode === "auth/email-already-in-use"){
-        setFirebaseErrorMessage("Ya existe una cuenta con esta dirección de correo");
+        setFirebaseErrorMessage(
+          "Ya existe una cuenta con esta dirección de correo"
+        );
       }else{
-        setFirebaseErrorMessage("Ocurrio algo inesperado. Intentelo nuevamente");
+        setFirebaseErrorMessage(
+          "Ocurrio algo inesperado. Intentelo nuevamente"
+        );
       }
     });
   }
@@ -78,7 +81,12 @@ export default function SignUpForm(){
   const handleSubmit = (e) => {
     const data = new FormData(e.currentTarget);
     e.preventDefault();
-    if(!firstNameFieldError && !lastNameFieldError && !emailFieldError && !passwordFieldError){
+    if(
+        !firstNameFieldError
+        && !lastNameFieldError
+        && !emailFieldError
+        && !passwordFieldError
+      ){
       createUserWithEmailAndPassword(
         data.get('email'),
         data.get('password'),
@@ -88,7 +96,6 @@ export default function SignUpForm(){
     }
   };
 
-  */
   return(
     <Container component="main" maxWidth="md" >
       <Box
@@ -112,7 +119,7 @@ export default function SignUpForm(){
         >
           {firebaseErrorMessage}
         </Typography>
-        <Box component="form" noValidate sx={{ mt: 3 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField

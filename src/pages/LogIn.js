@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 
 import {Link} from "react-router-dom";
 
-//import firebase from "../utils/firebase.js";
+import firebase from "../utils/firebase.js";
 
 export default function SignInForm(){
 
@@ -29,7 +29,6 @@ export default function SignInForm(){
     }
   }
 
-  /*
   const signIn = (email, password) =>{
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
@@ -54,7 +53,6 @@ export default function SignInForm(){
       signIn(data.get('email'), data.get('password'));
     }
   };
-  */
 
   return (
     <Container component="main" maxWidth="md">
@@ -79,7 +77,7 @@ export default function SignInForm(){
         >
           {firebaseErrorMessage}
         </Typography>
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
