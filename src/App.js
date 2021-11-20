@@ -15,6 +15,7 @@ import Search from './pages/Search.js'
 import Analysis from './pages/Analysis.js'
 import Profile from './pages/Profile.js'
 import LogIn from './pages/LogIn.js'
+import SignUp from './pages/SignUp.js'
 
 const theme = createTheme({
   palette: {
@@ -61,6 +62,9 @@ function App(){
           </Route>
           <Route path="/login">
             <LogIn/>
+          </Route>
+          <Route path="/signup">
+            <SignUp/>
           </Route>
           <Route path="/">
             <Search/>

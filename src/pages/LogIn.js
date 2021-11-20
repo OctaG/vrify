@@ -125,7 +125,7 @@ export default function SignInForm(){
           </Button>
           <Grid container justifyContent="center" sx={{marginTop: 2}}>
             <Grid item>
-              <Link to="/sign-up">
+              <Link to="/signup">
                 ¿Aún no tiene una cuenta? Cree una
               </Link>
             </Grid>
