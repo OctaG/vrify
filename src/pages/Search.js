@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { useHistory } from "react-router-dom";
 
@@ -9,11 +9,26 @@ import Typography from '@mui/material/Typography';
 
 import SearchBar from '../components/SearchBar.js'
 
-
-
+const axios = require('axios');
 
 export default function Search(){
+
   const history = useHistory();
+  const [url, setURL] = useState("")
+
+  const returnURL = (url) => {
+    setURL(url);
+  }
+
+  const analyzeTweet = () => {
+    axios.post('http://127.0.0.1:5000/pushTweetAnalisisToDB', {
+      url: url,
+    }).then(function (response) {
+        console.log(response);
+    });
+  }
+
+
   return(
     <Container maxWidth="xl">
       <Box sx={{marginTop: 20}}>
@@ -37,12 +52,12 @@ export default function Search(){
         </Typography>
       </Box>
       <Box sx={{marginTop: 5}}>
-        <SearchBar/>
+        <SearchBar returnURL={returnURL}/>
       </Box>
       <Box textAlign='center' sx={{padding: 5}}>
         <Button
           onClick={() => {
-            history.push("/analysis");
+            analyzeTweet();
           }}
           variant="contained"
           size="large"

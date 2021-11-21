@@ -6,7 +6,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 
-export default function SearchBar(){
+export default function SearchBar(props){
   return(
     <Container maxWidth="xl">
         <OutlinedInput
@@ -22,6 +22,7 @@ export default function SearchBar(){
             borderRadius: 4,
             color: "text.secondary",
           }}
+          onChange = {(e) => props.returnURL(e.target.value)}
         />
     </Container>
   );
