@@ -14,6 +14,8 @@ import {Link} from "react-router-dom";
 
 import firebase from "../utils/firebase.js";
 
+const axios = require('axios');
+
 export default function SignUpForm(){
 
   const [firstNameFieldError, setFirstNameFieldError] = useState(false);
@@ -63,6 +65,18 @@ export default function SignUpForm(){
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       console.log("User created");
+      axios.post('http://127.0.0.1:5000/pushUserToDB', {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        uid: userCredential.user.uid,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     })
     .catch((error) => {
       const errorCode = error.code;
