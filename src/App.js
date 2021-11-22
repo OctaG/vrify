@@ -1,5 +1,9 @@
+import React, {useState} from 'react';
+
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import firebase from "./utils/firebase.js";
 
 import {
   BrowserRouter as Router,
@@ -46,6 +50,17 @@ const theme = createTheme({
 });
 
 function App(){
+
+  const [user, setUser] = useState(false);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if(user){
+      setUser(true);
+    }else{
+      setUser(false);
+    }
+  });
+
   return(
     <ThemeProvider theme={theme}>
       <Router>
@@ -62,6 +77,14 @@ function App(){
           <Route path="/signup">
             <SignUp/>
           </Route>
+          {
+            user?
+            <Route path="/profile">
+              <Profile/>
+            </Route>
+            :
+            null
+          }
           <Route path="/">
             <Search/>
           </Route>

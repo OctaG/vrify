@@ -5,12 +5,25 @@ import { Link } from "react-router-dom";
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+
+import PersonIcon from '@mui/icons-material/Person';
 
 import Navbar from 'react-bootstrap/navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
+import firebase from "../utils/firebase.js";
 
 export default function Header(props){
+  const [user, setUser] = useState(false);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if(user){
+      setUser(true);
+    }else{
+      setUser(false);
+    }
+  });
   return(
     <Box sx={
       {
@@ -32,7 +45,16 @@ export default function Header(props){
             <Nav.Link as={Link} to={'/search'}>BUSCAR</Nav.Link>
             <Nav.Link>CÓMO FUNCIONA</Nav.Link>
             <Nav.Link>FEEDBACK</Nav.Link>
-            <Nav.Link as={Link} to={'/login'}>LOG IN</Nav.Link>
+            {
+              user?
+              <Nav.Link as={Link} to={'/profile'}>
+                <Avatar sx={{marginLeft: 2, backgroundColor:"primary.main"}}>
+                  <PersonIcon/>
+                </Avatar>
+              </Nav.Link>
+              :
+              <Nav.Link as={Link} to={'/login'}>LOG IN</Nav.Link>
+            }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
