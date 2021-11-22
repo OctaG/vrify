@@ -15,14 +15,15 @@ export default function Profile(){
       <Box sx={{marginTop: 5, flexGrow: 1 }}>
         <ProfileCard/>
       </Box>
-      <Box sx={{marginTop: 10}}>
+      <Box sx={{marginTop: 10, marginBottom: 10}}>
         <Typography
           gutterBottom
+          align="center"
           variant="h3"
           color="text.secondary"
           sx={{fontWeight: "bold"}}
         >
-          Análisis agregados recientemente,
+          Análisis guardados
         </Typography>
         <AnalysisPreviewCarousel queryOnlyProfile/>
       </Box>
