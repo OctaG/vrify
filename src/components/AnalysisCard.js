@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
@@ -11,8 +11,37 @@ import Typography from '@mui/material/Typography';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 
+const axios = require('axios');
 
-export default function AnalysisCard(){
+export default function AnalysisCard(props){
+
+  const [tweetAnalysis, setTweetAnalysis] = useState("");
+  const [analysisDescriptionText, setAnalysisDescriptionText] = useState("");
+
+  useEffect(() => {
+    console.log("Entered");
+    axios.get('http://127.0.0.1:5000/readTweetAnalysisFromDB', {
+    params: {
+      tweetID: props.tweetID
+    }
+  }).then(function (response) {
+      setTweetAnalysis(response.data);
+      if(response.data == "FAKE"){
+        setAnalysisDescriptionText(
+          "creemos que este tweet contiene información falsa. Ayudanos a " +
+          "combatir las noticias falsas difundiendo que el tweet es " +
+          "posiblemente falso."
+        );
+      }else{
+        setAnalysisDescriptionText(
+          "creemos que este tweet contiene información verídica. Ayudanos a " +
+          "combatir las noticias falsas difundiendo que el tweet es " +
+          "posiblemente verídico."
+        );
+      }
+    });
+ }, []);
+
   return(
     <Container maxWidth="md">
       <Card sx={{ maxWidth: 800 }}>
@@ -23,12 +52,10 @@ export default function AnalysisCard(){
             color="text.primary"
             sx={{fontWeight: "bold"}}
           >
-            Totalmente falso,
+            {tweetAnalysis},
           </Typography>
           <Typography variant="h4" color="text.secondary">
-            estamos completamente seguros de que la información de este
-            tweet es falsa. Ayudanos a erradicar noticias falsas no
-            compartiendo este tweet.
+            {analysisDescriptionText}
           </Typography>
         </CardContent>
         <CardActions>

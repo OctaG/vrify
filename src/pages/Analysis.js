@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useLocation } from "react-router-dom";
+
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -14,20 +16,24 @@ import FaqsCard from '../components/FaqsCard.js'
 import ArticlePreviewCarousel from'../modules/ArticlePreviewCarousel.js'
 
 export default function Analysis(){
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const tweetID = location.state? location.state.tweetID :  params.get('id');
   return(
     <Container maxWidth="xl">
       <Box sx={{marginTop: 5, flexGrow: 1 }}>
         <Grid container>
           <Grid item xs={6}>
             <TwitterTweetEmbed
-              tweetId={'1454508301916549124'}
+              tweetId={tweetID}
             />
           </Grid>
           <Grid item xs={6}>
-            <AnalysisCard/>
+            <AnalysisCard tweetID={tweetID}/>
           </Grid>
         </Grid>
       </Box>
+      {/*
       <Box sx={{marginTop: 10}}>
         <Typography
           gutterBottom
@@ -50,6 +56,7 @@ export default function Analysis(){
         </Typography>
         <FaqsCard/>
       </Box>
+      */}
     </Container>
   );
 }

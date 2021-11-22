@@ -21,10 +21,10 @@ export default function Search(){
   }
 
   const analyzeTweet = () => {
-    axios.post('http://127.0.0.1:5000/pushTweetAnalisisToDB', {
+    axios.post('http://127.0.0.1:5000/pushTweetAnalysisToDB', {
       url: url,
     }).then(function (response) {
-        console.log(response);
+      history.push("/Analysis", {tweetID: response.data})
     });
   }
 
