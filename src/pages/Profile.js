@@ -24,7 +24,7 @@ export default function Profile(){
         >
           Análisis agregados recientemente,
         </Typography>
-        <AnalysisPreviewCarousel color="card.true"/>
+        <AnalysisPreviewCarousel queryOnlyProfile/>
       </Box>
     </Container>
   );
