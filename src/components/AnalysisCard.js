@@ -13,6 +13,8 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 
 import ShareModal from './ShareModal.js';
 
+import firebase from "../utils/firebase.js";
+
 const axios = require('axios');
 
 export default function AnalysisCard(props){
@@ -23,6 +25,7 @@ export default function AnalysisCard(props){
     "http://localhost:3000/Analysis?id=" + props.tweetID
   );
   const [analysisDescriptionText, setAnalysisDescriptionText] = useState("");
+  const user = firebase.auth().currentUser;
 
   useEffect(() => {
     console.log("Entered");
@@ -52,6 +55,15 @@ export default function AnalysisCard(props){
     const setShareableLink = "http://localhost:3000/Analysis?id=" + props.tweetID
     setOpenModal(true);
   };
+
+  const handleSave = () => {
+    axios.post('http://127.0.0.1:5000/saveTweetInUserProfile', {
+      tweetID: props.tweetID,
+      uid: user.uid,
+    }).then(function (response) {
+      console.log("Finished handle save");
+    });
+  }
 
 
   return(
@@ -89,18 +101,23 @@ export default function AnalysisCard(props){
           >
             Difunde que este tweet es falso
           </Button>
-          <Button
-            variant="contained"
-            endIcon={<SaveAltIcon/>}
-            sx={
-              {
-                backgroundColor: "button.tertiary",
-                '&:hover':{backgroundColor: "button.tertiary"}
+          {user?
+            <Button
+              variant="contained"
+              endIcon={<SaveAltIcon/>}
+              sx={
+                {
+                  backgroundColor: "button.tertiary",
+                  '&:hover':{backgroundColor: "button.tertiary"}
+                }
               }
-            }
-          >
-            Guardar esta información
-          </Button>
+              onClick={handleSave}
+            >
+              Guardar esta información
+            </Button>
+            :
+            null
+          }
         </CardActions>
       </Card>
     </Container>
