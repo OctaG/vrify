@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 
 import Container from '@mui/material/Container';
@@ -11,9 +11,23 @@ import {useHistory} from "react-router-dom";
 
 import firebase from "../utils/firebase.js";
 
+const axios = require('axios');
+
 export default function Header(props){
 
   const history = useHistory();
+  const [userInfo, setUserInfo] = useState();
+  const user = firebase.auth().currentUser;
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:5000/readUsersInfoFromDB', {
+    params: {
+      uid: user.uid
+    }
+  }).then(function (response) {
+      setUserInfo(response.data);
+    });
+ }, []);
 
   const logOut = () => {
     firebase.auth().signOut().then(() => {
@@ -36,7 +50,7 @@ export default function Header(props){
            height: 80,
           }}
          >
-          MS
+         {userInfo? userInfo.firstName[0] +  userInfo.lastName[0] : ""}
         </Avatar>
       </Box>
       <Box>
@@ -46,7 +60,7 @@ export default function Header(props){
           align="center"
           sx={{fontWeight: "bold", marginBottom: -1}}
         >
-        Michael Scott
+        {userInfo? userInfo.firstName + " " +  userInfo.lastName : ""}
         </Typography>
         <Typography
           variant="h6"
@@ -54,7 +68,7 @@ export default function Header(props){
           align="center"
           sx={{fontWeight: "100"}}
         >
-          Miembro desde abril de 2021
+          {userInfo? userInfo.email : ""}
         </Typography>
       </Box>
       <Box sx={{marginTop: 3, textAlign:"center"}}>
