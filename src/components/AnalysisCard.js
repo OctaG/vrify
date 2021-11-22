@@ -11,11 +11,17 @@ import Typography from '@mui/material/Typography';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 
+import ShareModal from './ShareModal.js';
+
 const axios = require('axios');
 
 export default function AnalysisCard(props){
 
   const [tweetAnalysis, setTweetAnalysis] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [shereableLink, setShereableLink] = useState(
+    "http://localhost:3000/Analysis?id=" + props.tweetID
+  );
   const [analysisDescriptionText, setAnalysisDescriptionText] = useState("");
 
   useEffect(() => {
@@ -42,8 +48,19 @@ export default function AnalysisCard(props){
     });
  }, []);
 
+  const handleShare = () =>{
+    const setShareableLink = "http://localhost:3000/Analysis?id=" + props.tweetID
+    setOpenModal(true);
+  };
+
+
   return(
     <Container maxWidth="md">
+      {openModal?
+        <ShareModal link={shereableLink} closeModal={setOpenModal}/>
+        :
+        null
+      }
       <Card sx={{ maxWidth: 800 }}>
         <CardContent>
           <Typography
@@ -68,6 +85,7 @@ export default function AnalysisCard(props){
                 '&:hover':{backgroundColor: "button.secondary"}
               }
             }
+            onClick={handleShare}
           >
             Difunde que este tweet es falso
           </Button>
