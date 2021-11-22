@@ -41,9 +41,6 @@ const theme = createTheme({
       else: "#E6C773",
     }
   },
-  text: {
-    primary: "#FE5857",
-  },
   typography: {
     fontFamily: 'Helvetica',
   },
