@@ -10,11 +10,13 @@ import LoginIcon from '@mui/icons-material/Login';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 import firebase from "../utils/firebase.js";
 
 export default function SignInForm(){
+
+  const history = useHistory();
 
   const [emailFieldError, setEmailFieldError] = useState(false);
   const [firebaseErrorMessage, setFirebaseErrorMessage] = useState("");
@@ -33,6 +35,7 @@ export default function SignInForm(){
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       console.log("User logged");
+      history.push("./search")
     })
     .catch((error) => {
       const errorCode = error.code;

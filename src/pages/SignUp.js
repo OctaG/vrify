@@ -10,13 +10,15 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 import firebase from "../utils/firebase.js";
 
 const axios = require('axios');
 
 export default function SignUpForm(){
+
+  const history = useHistory();
 
   const [firstNameFieldError, setFirstNameFieldError] = useState(false);
   const [lastNameFieldError, setLastNameFieldError] = useState(false);
@@ -65,6 +67,7 @@ export default function SignUpForm(){
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       console.log("User created");
+      history.push("./search")
       axios.post('http://127.0.0.1:5000/pushUserToDB', {
         firstName: firstName,
         lastName: lastName,
