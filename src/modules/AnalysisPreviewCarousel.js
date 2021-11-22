@@ -1,8 +1,6 @@
-// TODO: Refactorizar este módulo y Article Preview Card en un solo componente.
+import React, {useEffect, useState} from 'react';
 
-import React from 'react';
-
-import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
@@ -12,22 +10,29 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ArticlePreviewCard from '../components/ArticlePreviewCard.js'
 import AnalysisPreviewCard from '../components/AnalysisPreviewCard.js'
 
+const axios = require('axios');
+
 export default function AnalysisPreviewCarousel(props){
+  const [tweetList, setTweetList] = useState([])
+  useEffect(() => {
+    axios.get('http://127.0.0.1:5000/readAllTweetsFromDB')
+    .then(function (response) {
+      setTweetList(Object.values(response.data));
+    });
+ }, []);
+
   return(
-    <Carousel showArrows={false} showStatus={false}>
-      {[0, 1].map((value) => (
-        <Grid sx={{ flexGrow: 1, marginBottom: 6}} container spacing={1}>
-          <Grid item xs={12}>
-            <Grid container justifyContent="center" spacing={3}>
-              {[0, 1, 2, 3].map((value) => (
-                <Grid key={value} item>
-                    <AnalysisPreviewCard color={props.color}/>
-                </Grid>
-              ))}
-            </Grid>
+    <Box>
+      <Grid container justifyContent="center" spacing={2}>
+        {tweetList.slice(0,3).map((value) => (
+          <Grid key={value} item>
+              <AnalysisPreviewCard
+                tweet={value}
+                color={value.analysis == "REAL" ? "card.true" : "card.false"}
+              />
           </Grid>
-        </Grid>
-      ))}
-    </Carousel>
+        ))}
+      </Grid>
+    </Box>
   );
 }

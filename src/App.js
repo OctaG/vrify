@@ -37,8 +37,7 @@ const theme = createTheme({
     },
     card: {
       false: "#FE5857",
-      true: "#5BD0A3",
-      else: "#E6C773",
+      true: "#5bd0a3"
     }
   },
   typography: {

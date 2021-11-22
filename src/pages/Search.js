@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import SearchBar from '../components/SearchBar.js'
+import AnalysisPreviewCarousel from '../modules/AnalysisPreviewCarousel.js';
 
 const axios = require('axios');
 
@@ -73,6 +74,16 @@ export default function Search(){
         >
           Buscar
         </Button>
+      </Box>
+      <Typography
+        variant="h3"
+        color="text.secondary"
+        sx={{fontWeight: "300", marginTop: 10, marginLeft:4}}
+      >
+        Tweets agregados recientemente,
+      </Typography>
+      <Box sx={{marginTop: 5, marginBottom: 10}}>
+        <AnalysisPreviewCarousel/>
       </Box>
     </Container>
   );

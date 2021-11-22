@@ -12,23 +12,35 @@ import { TwitterTweetEmbed } from 'react-twitter-embed'
 
 
 export default function AnalysisPreviewCard(props){
+  const tweet = props.tweet
   return(
-    <Card sx={{minWidth: 345, backgroundColor: props.color, borderRadius: 8}}>
-      <CardActionArea>
-        <Box sx={{marginTop: 3, marginBottom: -5}}>
-          <TwitterTweetEmbed
-            tweetId={'1454900611401584645'}
-          />
-        </Box>
-        <CardContent>
-          <Typography variant="h4" color="text.tertiary" sx={{fontWeight: "bold"}}>
-            Totalmente falso
-          </Typography>
-          <Typography variant="h6" color="text.tertiary">
-            10 de agosto de 2021
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <Container>
+      <Card sx={{minWidth: 345, backgroundColor: props.color, borderRadius: 8}}>
+        <CardActionArea>
+          <Box sx={{minHeight: 600, margin:2, marginBottom: -5}}>
+            <TwitterTweetEmbed
+              tweetId={tweet.tweetID}
+            />
+          </Box>
+          <CardContent>
+            <Typography
+              variant="h4"
+              color="text.tertiary"
+              align="center"
+              sx={{fontWeight: "bold"}}
+            >
+              Probably {tweet.analysis}
+            </Typography>
+            <Typography
+              variant="h6"
+              color="text.tertiary"
+              align="center"
+            >
+              {tweet.lastAnalysis}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Container>
   );
 }
