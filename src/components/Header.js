@@ -8,8 +8,8 @@ import Avatar from '@mui/material/Avatar';
 
 import PersonIcon from '@mui/icons-material/Person';
 
-import Navbar from 'react-bootstrap/navbar';
-import Nav from 'react-bootstrap/Nav';
+import {Navbar} from 'react-bootstrap';
+import {Nav} from 'react-bootstrap';
 
 import firebase from "../utils/firebase.js";
 
