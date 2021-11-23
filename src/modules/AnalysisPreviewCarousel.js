@@ -35,7 +35,7 @@ export default function AnalysisPreviewCarousel(props){
   return(
     <Box>
       <Grid container justifyContent="center" spacing={2}>
-        {tweetList.slice(0,4).map((value) => (
+        {tweetList.map((value) => (
           <Grid key={value.tweetID} item>
               <AnalysisPreviewCard
                 tweet={value}
