@@ -21,7 +21,7 @@ export default function AnalysisCard(props){
   const [tweetAnalysis, setTweetAnalysis] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [shereableLink] = useState(
-    "http://localhost:3000/Analysis?id=" + props.tweetID
+    "https://vrify-frontend.herokuapp.com/analysis?id=" + props.tweetID
   );
   const [analysisDescriptionText, setAnalysisDescriptionText] = useState("");
   const user = firebase.auth().currentUser;
