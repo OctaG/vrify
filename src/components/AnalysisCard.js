@@ -29,7 +29,7 @@ export default function AnalysisCard(props){
 
   useEffect(() => {
     console.log("Entered");
-    axios.get('http://127.0.0.1:5000/readTweetAnalysisFromDB', {
+    axios.get('https://vrify-backend.herokuapp.com/readTweetAnalysisFromDB', {
     params: {
       tweetID: props.tweetID
     }
@@ -57,7 +57,7 @@ export default function AnalysisCard(props){
   };
 
   const handleSave = () => {
-    axios.post('http://127.0.0.1:5000/saveTweetInUserProfile', {
+    axios.post('https://vrify-backend.herokuapp.com/saveTweetInUserProfile', {
       tweetID: props.tweetID,
       uid: user.uid,
     }).then(function (response) {

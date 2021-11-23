@@ -22,7 +22,7 @@ export default function Search(){
   }
 
   const analyzeTweet = () => {
-    axios.post('http://127.0.0.1:5000/pushTweetAnalysisToDB', {
+    axios.post('https://vrify-backend.herokuapp.com/pushTweetAnalysisToDB', {
       url: url,
     }).then(function (response) {
       history.push("/Analysis", {tweetID: response.data})

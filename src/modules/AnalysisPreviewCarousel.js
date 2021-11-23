@@ -19,12 +19,12 @@ export default function AnalysisPreviewCarousel(props){
 
   useEffect(() => {
     if(!props.queryOnlyProfile){
-      axios.get('http://127.0.0.1:5000/readAllTweetsFromDB')
+      axios.get('https://vrify-backend.herokuapp.com/readAllTweetsFromDB')
       .then(function (response) {
         setTweetList(Object.values(response.data));
       });
     }else{
-      axios.get('http://127.0.0.1:5000/readUsersSavedTweets', {
+      axios.get('https://vrify-backend.herokuapp.com/readUsersSavedTweets', {
         params: {
           uid: user.uid
         }

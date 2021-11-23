@@ -20,7 +20,7 @@ export default function Header(props){
   const user = firebase.auth().currentUser;
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/readUsersInfoFromDB', {
+    axios.get('https://vrify-backend.herokuapp.com/readUsersInfoFromDB', {
     params: {
       uid: user.uid
     }

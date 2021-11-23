@@ -68,7 +68,7 @@ export default function SignUpForm(){
     .then((userCredential) => {
       console.log("User created");
       history.push("./search")
-      axios.post('http://127.0.0.1:5000/pushUserToDB', {
+      axios.post('https://vrify-backend.herokuapp.com/pushUserToDB', {
         firstName: firstName,
         lastName: lastName,
         email: email,
