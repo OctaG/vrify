@@ -27,7 +27,6 @@ export default function AnalysisCard(props){
   const user = firebase.auth().currentUser;
 
   useEffect(() => {
-    console.log("Entered");
     axios.get('https://vrify-backend.herokuapp.com/readTweetAnalysisFromDB', {
     params: {
       tweetID: props.tweetID
@@ -58,8 +57,6 @@ export default function AnalysisCard(props){
     axios.post('https://vrify-backend.herokuapp.com/saveTweetInUserProfile', {
       tweetID: props.tweetID,
       uid: user.uid,
-    }).then(function (response) {
-      console.log("Finished handle save");
     });
   }
 

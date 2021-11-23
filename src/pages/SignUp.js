@@ -65,19 +65,12 @@ export default function SignUpForm(){
   const createUserWithEmailAndPassword = (email ,password, firstName, lastName) => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      console.log("User created");
       history.push("./search")
       axios.post('https://vrify-backend.herokuapp.com/pushUserToDB', {
         firstName: firstName,
         lastName: lastName,
         email: email,
         uid: userCredential.user.uid,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
       });
     })
     .catch((error) => {

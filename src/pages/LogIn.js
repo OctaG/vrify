@@ -33,7 +33,6 @@ export default function SignInForm(){
   const signIn = (email, password) =>{
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      console.log("User logged");
       history.push("./search")
     })
     .catch((error) => {
