@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 
-import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import AnalysisPreviewCard from '../components/AnalysisPreviewCard.js'
@@ -32,16 +30,16 @@ export default function AnalysisPreviewCarousel(props){
         setTweetList(response.data);
       });
     }
- }, []);
+ });
 
   return(
     <Box>
       <Grid container justifyContent="center" spacing={2}>
         {tweetList.slice(0,4).map((value) => (
-          <Grid key={value} item>
+          <Grid key={value.tweetID} item>
               <AnalysisPreviewCard
                 tweet={value}
-                color={value.analysis == "REAL" ? "card.true" : "card.false"}
+                color={value.analysis === "REAL" ? "card.true" : "card.false"}
               />
           </Grid>
         ))}

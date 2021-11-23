@@ -4,7 +4,6 @@ import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
@@ -21,7 +20,7 @@ export default function AnalysisCard(props){
 
   const [tweetAnalysis, setTweetAnalysis] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const [shereableLink, setShereableLink] = useState(
+  const [shereableLink] = useState(
     "http://localhost:3000/Analysis?id=" + props.tweetID
   );
   const [analysisDescriptionText, setAnalysisDescriptionText] = useState("");
@@ -35,7 +34,7 @@ export default function AnalysisCard(props){
     }
   }).then(function (response) {
       setTweetAnalysis(response.data);
-      if(response.data == "FAKE"){
+      if(response.data === "FAKE"){
         setAnalysisDescriptionText(
           "creemos que este tweet contiene información falsa. Ayudanos a " +
           "combatir las noticias falsas difundiendo que el tweet es " +
@@ -49,10 +48,9 @@ export default function AnalysisCard(props){
         );
       }
     });
- }, []);
+ });
 
   const handleShare = () =>{
-    const setShareableLink = "http://localhost:3000/Analysis?id=" + props.tweetID
     setOpenModal(true);
   };
 

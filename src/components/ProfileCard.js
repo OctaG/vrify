@@ -27,7 +27,7 @@ export default function Header(props){
   }).then(function (response) {
       setUserInfo(response.data);
     });
- }, []);
+ });
 
   const logOut = () => {
     firebase.auth().signOut().then(() => {

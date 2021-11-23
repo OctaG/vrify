@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
